@@ -1,0 +1,16 @@
+/__init__.pyc
+/abstract.pyc
+/admin.pyc
+/api.pyc
+/commit.pyc
+/fetch.pyc
+/frame.pyc
+/group.pyc
+/legacy.pyc
+/message.pyc
+/metadata.pyc
+/offset.pyc
+/parser.pyc
+/produce.pyc
+/struct.pyc
+/types.pyc

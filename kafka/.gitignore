@@ -1,0 +1,11 @@
+/__init__.pyc
+/client.pyc
+/client_async.pyc
+/cluster.pyc
+/codec.pyc
+/conn.pyc
+/errors.pyc
+/future.pyc
+/structs.pyc
+/util.pyc
+/version.pyc
