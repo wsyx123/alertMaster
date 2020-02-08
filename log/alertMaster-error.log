@@ -1,0 +1,1 @@
+[ERROR] [2020-01-30 22:04:39,830] [Thread-3:123145384210432] [kafka.conn:412]  Connect attempt to <BrokerConnection node_id=bootstrap-0 host=172.16.149.12:9092 <connecting> [IPv4 ('172.16.149.12', 9092)]> returned error 51. Disconnecting.

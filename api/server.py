@@ -11,14 +11,15 @@ import pickle
 import logging
 
 class APIServer():
-    def __init__(self,host='localhost',port=9001,queue=None):
+    def __init__(self,host='0.0.0.0',port=9001,queue=None,lock=None):
         self.host = host
         self.port = port
         self.manager_queue = queue
+        self.rule_lock = lock
         
     def routers(self):
         urlpatterns = (
-            ('/status', self.get_status),
+            ('/rules', self.get_rules),
             ('/rule/add',self.add_rule),
             ('/rule/delete',self.delete_rule),
             ('/worker/get',self.get_workers),
@@ -50,7 +51,7 @@ class APIServer():
             logging.error(e.message)
             os._exit(1)
     
-    def get_status(self,environment):
+    def get_rules(self,environment):
         rule_data = self.get_rule() # 这里获取到的dict 数据 是使用单引号, 不能直接使用str(rule_data), 浏览器解析会出错
         rule_data = json.dumps(rule_data) # 需要使用json.dumps() 转成str , 这样数据是使用双引号
         return [rule_data.encode('utf-8')]
@@ -72,8 +73,10 @@ class APIServer():
             return {}
     
     def save_rule(self,rule_data):
+        self.rule_lock.acquire()
         with open('data/rule.pk','wb') as f:
             pickle.dump(rule_data,f)
+        self.rule_lock.release()
        
     def add_rule(self,environment):
         try:

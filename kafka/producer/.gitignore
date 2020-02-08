@@ -1,9 +1,0 @@
-/__init__.pyc
-/base.pyc
-/buffer.pyc
-/future.pyc
-/kafka.pyc
-/keyed.pyc
-/record_accumulator.pyc
-/sender.pyc
-/simple.pyc

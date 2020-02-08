@@ -30,11 +30,20 @@ def logger_config(logfile):
                 "stream": "ext://sys.stdout"
             },
 
-            "default": {
+            "info": {
                 "class": "logging.handlers.RotatingFileHandler",
                 "level": "INFO",
                 "formatter": "standard",
-                "filename": logfile,
+                "filename": "{}-info.log".format(logfile),
+                'mode': 'w+',
+                "maxBytes": 1024*1024*5,  # 5 MB
+                "backupCount": 20
+            },
+            "error": {
+                "class": "logging.handlers.RotatingFileHandler",
+                "level": "ERROR",
+                "formatter": "standard",
+                "filename": "{}-error.log".format(logfile),
                 'mode': 'w+',
                 "maxBytes": 1024*1024*5,  # 5 MB
                 "backupCount": 20
@@ -42,7 +51,7 @@ def logger_config(logfile):
         },
 
         "root": {
-            'handlers': ['default'],
+            'handlers': ['info'],
             'level': "INFO",
             'propagate': False
         }
